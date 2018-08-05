@@ -1,3 +1,19 @@
 first class in Devops
 
 Git
+
+we will see more tools like
+
+jenkins
+
+docker
+
+nagios
+
+tomcat
+
+vagrant
+
+virtualbox
+
+splunk
