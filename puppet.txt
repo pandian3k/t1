@@ -1,0 +1,573 @@
+Microsoft Windows [Version 10.0.14393]
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\Users\Raja\Desktop\avagrant>vagrant up
+Bringing machine 'puppet' up with 'virtualbox' provider...
+Bringing machine 'node1' up with 'virtualbox' provider...
+==> puppet: Importing base box 'ubuntu/xenial64'...
+==> puppet: Matching MAC address for NAT networking...
+==> puppet: Checking if box 'ubuntu/xenial64' is up to date...
+==> puppet: A newer version of the box 'ubuntu/xenial64' for provider 'virtualbox' is
+==> puppet: available! You currently have version '20180713.0.0'. The latest is version
+==> puppet: '20180808.0.0'. Run `vagrant box update` to update.
+==> puppet: Setting the name of the VM: avagrant_puppet_1533868924247_63653
+==> puppet: Clearing any previously set network interfaces...
+==> puppet: Preparing network interfaces based on configuration...
+    puppet: Adapter 1: nat
+    puppet: Adapter 2: hostonly
+==> puppet: Forwarding ports...
+    puppet: 22 (guest) => 2222 (host) (adapter 1)
+==> puppet: Running 'pre-boot' VM customizations...
+==> puppet: Booting VM...
+==> puppet: Waiting for machine to boot. This may take a few minutes...
+    puppet: SSH address: 127.0.0.1:2222
+    puppet: SSH username: vagrant
+    puppet: SSH auth method: private key
+    puppet: Warning: Connection reset. Retrying...
+    puppet: Warning: Connection aborted. Retrying...
+    puppet: Warning: Connection reset. Retrying...
+    puppet: Warning: Connection aborted. Retrying...
+    puppet: Warning: Remote connection disconnect. Retrying...
+    puppet:
+    puppet: Vagrant insecure key detected. Vagrant will automatically replace
+    puppet: this with a newly generated keypair for better security.
+    puppet:
+    puppet: Inserting generated public key within guest...
+    puppet: Removing insecure key from the guest if it's present...
+    puppet: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> puppet: Machine booted and ready!
+==> puppet: Checking for guest additions in VM...
+    puppet: The guest additions on this VM do not match the installed version of
+    puppet: VirtualBox! In most cases this is fine, but in rare cases it can
+    puppet: prevent things such as shared folders from working properly. If you see
+    puppet: shared folder errors, please make sure the guest additions within the
+    puppet: virtual machine match the version of VirtualBox you have installed on
+    puppet: your host and reload your VM.
+    puppet:
+    puppet: Guest Additions Version: 5.1.34
+    puppet: VirtualBox Version: 5.2
+==> puppet: Setting hostname...
+==> puppet: Configuring and enabling network interfaces...
+==> puppet: Mounting shared folders...
+    puppet: /vagrant => C:/Users/Raja/Desktop/avagrant
+==> node1: Importing base box 'ubuntu/xenial64'...
+==> node1: Matching MAC address for NAT networking...
+==> node1: Checking if box 'ubuntu/xenial64' is up to date...
+==> node1: A newer version of the box 'ubuntu/xenial64' for provider 'virtualbox' is
+==> node1: available! You currently have version '20180713.0.0'. The latest is version
+==> node1: '20180808.0.0'. Run `vagrant box update` to update.
+==> node1: Setting the name of the VM: avagrant_node1_1533868993289_62729
+==> node1: Fixed port collision for 22 => 2222. Now on port 2200.
+==> node1: Clearing any previously set network interfaces...
+==> node1: Preparing network interfaces based on configuration...
+    node1: Adapter 1: nat
+    node1: Adapter 2: hostonly
+==> node1: Forwarding ports...
+    node1: 22 (guest) => 2200 (host) (adapter 1)
+==> node1: Running 'pre-boot' VM customizations...
+==> node1: Booting VM...
+==> node1: Waiting for machine to boot. This may take a few minutes...
+    node1: SSH address: 127.0.0.1:2200
+    node1: SSH username: vagrant
+    node1: SSH auth method: private key
+    node1: Warning: Connection aborted. Retrying...
+    node1: Warning: Connection reset. Retrying...
+    node1: Warning: Connection aborted. Retrying...
+    node1: Warning: Connection reset. Retrying...
+    node1: Warning: Connection aborted. Retrying...
+    node1: Warning: Connection reset. Retrying...
+    node1: Warning: Connection aborted. Retrying...
+    node1:
+    node1: Vagrant insecure key detected. Vagrant will automatically replace
+    node1: this with a newly generated keypair for better security.
+    node1:
+    node1: Inserting generated public key within guest...
+    node1: Removing insecure key from the guest if it's present...
+    node1: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> node1: Machine booted and ready!
+==> node1: Checking for guest additions in VM...
+    node1: The guest additions on this VM do not match the installed version of
+    node1: VirtualBox! In most cases this is fine, but in rare cases it can
+    node1: prevent things such as shared folders from working properly. If you see
+    node1: shared folder errors, please make sure the guest additions within the
+    node1: virtual machine match the version of VirtualBox you have installed on
+    node1: your host and reload your VM.
+    node1:
+    node1: Guest Additions Version: 5.1.34
+    node1: VirtualBox Version: 5.2
+==> node1: Setting hostname...
+==> node1: Configuring and enabling network interfaces...
+==> node1: Mounting shared folders...
+    node1: /vagrant => C:/Users/Raja/Desktop/avagrant
+
+C:\Users\Raja\Desktop\avagrant>vagrant ssh puppet
+Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.4.0-130-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+vagrant@puppet:~$ sudo vi /etc/hosts
+vagrant@puppet:~$ sudo  curl -O https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 13662  100 13662    0     0   4054      0  0:00:03  0:00:03 --:--:--  4055
+vagrant@puppet:~$ sudo dpkg -i puppetlabs-release-pc1-xenial.deb
+Selecting previously unselected package puppetlabs-release-pc1.
+(Reading database ... 54131 files and directories currently installed.)
+Preparing to unpack puppetlabs-release-pc1-xenial.deb ...
+Unpacking puppetlabs-release-pc1 (1.1.0-2xenial) ...
+Setting up puppetlabs-release-pc1 (1.1.0-2xenial) ...
+vagrant@puppet:~$ sudo apt-get update -y
+Ign:1 http://apt.puppetlabs.com xenial InRelease
+Get:2 http://apt.puppetlabs.com xenial Release [57.5 kB]
+Hit:3 http://archive.ubuntu.com/ubuntu xenial InRelease
+Get:4 http://security.ubuntu.com/ubuntu xenial-security InRelease [107 kB]
+Get:5 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [109 kB]
+Get:6 http://archive.ubuntu.com/ubuntu xenial-backports InRelease [107 kB]
+Get:7 http://security.ubuntu.com/ubuntu xenial-security/main Sources [131 kB]
+Get:8 http://archive.ubuntu.com/ubuntu xenial/main Sources [868 kB]
+Get:9 http://apt.puppetlabs.com xenial Release.gpg [819 B]
+Get:10 http://apt.puppetlabs.com xenial/PC1 amd64 Packages [22.9 kB]
+Get:11 http://security.ubuntu.com/ubuntu xenial-security/restricted Sources [2,116 B]
+Get:12 http://security.ubuntu.com/ubuntu xenial-security/universe Sources [69.9 kB]
+Get:13 http://apt.puppetlabs.com xenial/PC1 all Packages [8,432 B]
+Get:14 http://security.ubuntu.com/ubuntu xenial-security/multiverse Sources [2,088 B]
+Get:15 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages [533 kB]
+Get:16 http://archive.ubuntu.com/ubuntu xenial/restricted Sources [4,808 B]
+Get:17 http://security.ubuntu.com/ubuntu xenial-security/main Translation-en [228 kB]
+Get:18 http://archive.ubuntu.com/ubuntu xenial/universe Sources [7,728 kB]
+Get:19 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [365 kB]
+Get:20 http://security.ubuntu.com/ubuntu xenial-security/universe Translation-en [137 kB]
+Get:21 http://security.ubuntu.com/ubuntu xenial-security/multiverse amd64 Packages [3,456 B]
+Get:22 http://security.ubuntu.com/ubuntu xenial-security/multiverse Translation-en [1,744 B]
+Get:23 http://archive.ubuntu.com/ubuntu xenial/multiverse Sources [179 kB]
+Get:24 http://archive.ubuntu.com/ubuntu xenial/universe amd64 Packages [7,532 kB]
+Get:25 http://archive.ubuntu.com/ubuntu xenial/universe Translation-en [4,354 kB]
+Get:26 http://archive.ubuntu.com/ubuntu xenial/multiverse amd64 Packages [144 kB]
+Get:27 http://archive.ubuntu.com/ubuntu xenial/multiverse Translation-en [106 kB]
+Get:28 http://archive.ubuntu.com/ubuntu xenial-updates/main Sources [318 kB]
+Get:29 http://archive.ubuntu.com/ubuntu xenial-updates/restricted Sources [2,528 B]
+Get:30 http://archive.ubuntu.com/ubuntu xenial-updates/universe Sources [218 kB]
+Get:31 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse Sources [8,408 B]
+Get:32 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [824 kB]
+Get:33 http://archive.ubuntu.com/ubuntu xenial-updates/main Translation-en [339 kB]
+Get:34 http://archive.ubuntu.com/ubuntu xenial-updates/restricted amd64 Packages [7,556 B]
+Get:35 http://archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [679 kB]
+Get:36 http://archive.ubuntu.com/ubuntu xenial-updates/universe Translation-en [273 kB]
+Get:37 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse amd64 Packages [16.4 kB]
+Get:38 http://archive.ubuntu.com/ubuntu xenial-updates/multiverse Translation-en [8,344 B]
+Get:39 http://archive.ubuntu.com/ubuntu xenial-backports/main Sources [4,488 B]
+Get:40 http://archive.ubuntu.com/ubuntu xenial-backports/universe Sources [6,736 B]
+Get:41 http://archive.ubuntu.com/ubuntu xenial-backports/main amd64 Packages [6,756 B]
+Get:42 http://archive.ubuntu.com/ubuntu xenial-backports/main Translation-en [4,180 B]
+Get:43 http://archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages [7,420 B]
+Get:44 http://archive.ubuntu.com/ubuntu xenial-backports/universe Translation-en [3,996 B]
+Fetched 25.5 MB in 1min 2s (408 kB/s)
+Reading package lists... Done
+vagrant@puppet:~$ sudo apt-get install puppetserver
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  ca-certificates-java fontconfig-config fonts-dejavu-core java-common libavahi-client3 libavahi-common-data
+  libavahi-common3 libcups2 libfontconfig1 libjpeg-turbo8 libjpeg8 liblcms2-2 libnspr4 libnss3 libnss3-nssdb
+  libpcsclite1 libxi6 libxrender1 libxtst6 openjdk-8-jre-headless puppet-agent x11-common
+Suggested packages:
+  default-jre cups-common liblcms2-utils pcscd libnss-mdns fonts-dejavu-extra fonts-ipafont-gothic
+  fonts-ipafont-mincho fonts-wqy-microhei fonts-wqy-zenhei fonts-indic
+The following NEW packages will be installed:
+  ca-certificates-java fontconfig-config fonts-dejavu-core java-common libavahi-client3 libavahi-common-data
+  libavahi-common3 libcups2 libfontconfig1 libjpeg-turbo8 libjpeg8 liblcms2-2 libnspr4 libnss3 libnss3-nssdb
+  libpcsclite1 libxi6 libxrender1 libxtst6 openjdk-8-jre-headless puppet-agent puppetserver x11-common
+0 upgraded, 23 newly installed, 0 to remove and 40 not upgraded.
+Need to get 80.8 MB of archives.
+After this operation, 247 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://apt.puppetlabs.com xenial/PC1 amd64 puppet-agent amd64 1.10.14-1xenial [16.2 MB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libjpeg-turbo8 amd64 1.4.2-0ubuntu3.1 [111 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial/main amd64 liblcms2-2 amd64 2.6-3ubuntu2 [137 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 x11-common all 1:7.7+13ubuntu3.1 [22.9 kB]
+Get:5 http://archive.ubuntu.com/ubuntu xenial/main amd64 libxtst6 amd64 2:1.2.2-1 [14.1 kB]
+Get:6 http://archive.ubuntu.com/ubuntu xenial/main amd64 java-common all 0.56ubuntu2 [7,742 B]
+Get:7 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libavahi-common-data amd64 0.6.32~rc+dfsg-1ubuntu2.2 [2
+1.5 kB]
+Get:8 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libavahi-common3 amd64 0.6.32~rc+dfsg-1ubuntu2.2 [21.6
+kB]
+Get:9 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libavahi-client3 amd64 0.6.32~rc+dfsg-1ubuntu2.2 [25.2
+kB]
+Get:10 http://apt.puppetlabs.com xenial/PC1 amd64 puppetserver all 2.8.1-1puppetlabs1 [34.5 MB]
+Get:11 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libcups2 amd64 2.1.3-4ubuntu0.5 [197 kB]
+Get:12 http://archive.ubuntu.com/ubuntu xenial/main amd64 libjpeg8 amd64 8c-2ubuntu8 [2,194 B]
+Get:13 http://archive.ubuntu.com/ubuntu xenial/main amd64 fonts-dejavu-core all 2.35-1 [1,039 kB]
+Get:14 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 fontconfig-config all 2.11.94-0ubuntu1.1 [49.9 kB]
+Get:15 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libfontconfig1 amd64 2.11.94-0ubuntu1.1 [131 kB]
+Get:16 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libnspr4 amd64 2:4.13.1-0ubuntu0.16.04.1 [112 kB]
+Get:17 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libnss3-nssdb all 2:3.28.4-0ubuntu0.16.04.3 [10.6 kB]
+Get:18 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libnss3 amd64 2:3.28.4-0ubuntu0.16.04.3 [1,148 kB]
+Get:19 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 libpcsclite1 amd64 1.8.14-1ubuntu1.16.04.1 [21.4 kB]
+Get:20 http://archive.ubuntu.com/ubuntu xenial/main amd64 libxi6 amd64 2:1.7.6-1 [28.6 kB]
+Get:21 http://archive.ubuntu.com/ubuntu xenial/main amd64 libxrender1 amd64 1:0.9.9-0ubuntu1 [18.5 kB]
+Get:22 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 openjdk-8-jre-headless amd64 8u181-b13-0ubuntu0.16.04.
+1 [27.0 MB]
+Get:23 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 ca-certificates-java all 20160321ubuntu1 [12.5 kB]
+Fetched 80.8 MB in 1min 15s (1,076 kB/s)
+Selecting previously unselected package libjpeg-turbo8:amd64.
+(Reading database ... 54136 files and directories currently installed.)
+Preparing to unpack .../libjpeg-turbo8_1.4.2-0ubuntu3.1_amd64.deb ...
+Unpacking libjpeg-turbo8:amd64 (1.4.2-0ubuntu3.1) ...
+Selecting previously unselected package liblcms2-2:amd64.
+Preparing to unpack .../liblcms2-2_2.6-3ubuntu2_amd64.deb ...
+Unpacking liblcms2-2:amd64 (2.6-3ubuntu2) ...
+Selecting previously unselected package x11-common.
+Preparing to unpack .../x11-common_1%3a7.7+13ubuntu3.1_all.deb ...
+dpkg-query: no packages found matching nux-tools
+Unpacking x11-common (1:7.7+13ubuntu3.1) ...
+Selecting previously unselected package libxtst6:amd64.
+Preparing to unpack .../libxtst6_2%3a1.2.2-1_amd64.deb ...
+Unpacking libxtst6:amd64 (2:1.2.2-1) ...
+Selecting previously unselected package java-common.
+Preparing to unpack .../java-common_0.56ubuntu2_all.deb ...
+Unpacking java-common (0.56ubuntu2) ...
+Selecting previously unselected package libavahi-common-data:amd64.
+Preparing to unpack .../libavahi-common-data_0.6.32~rc+dfsg-1ubuntu2.2_amd64.deb ...
+Unpacking libavahi-common-data:amd64 (0.6.32~rc+dfsg-1ubuntu2.2) ...
+Selecting previously unselected package libavahi-common3:amd64.
+Preparing to unpack .../libavahi-common3_0.6.32~rc+dfsg-1ubuntu2.2_amd64.deb ...
+Unpacking libavahi-common3:amd64 (0.6.32~rc+dfsg-1ubuntu2.2) ...
+Selecting previously unselected package libavahi-client3:amd64.
+Preparing to unpack .../libavahi-client3_0.6.32~rc+dfsg-1ubuntu2.2_amd64.deb ...
+Unpacking libavahi-client3:amd64 (0.6.32~rc+dfsg-1ubuntu2.2) ...
+Selecting previously unselected package libcups2:amd64.
+Preparing to unpack .../libcups2_2.1.3-4ubuntu0.5_amd64.deb ...
+Unpacking libcups2:amd64 (2.1.3-4ubuntu0.5) ...
+Selecting previously unselected package libjpeg8:amd64.
+Preparing to unpack .../libjpeg8_8c-2ubuntu8_amd64.deb ...
+Unpacking libjpeg8:amd64 (8c-2ubuntu8) ...
+Selecting previously unselected package fonts-dejavu-core.
+Preparing to unpack .../fonts-dejavu-core_2.35-1_all.deb ...
+Unpacking fonts-dejavu-core (2.35-1) ...
+Selecting previously unselected package fontconfig-config.
+Preparing to unpack .../fontconfig-config_2.11.94-0ubuntu1.1_all.deb ...
+Unpacking fontconfig-config (2.11.94-0ubuntu1.1) ...
+Selecting previously unselected package libfontconfig1:amd64.
+Preparing to unpack .../libfontconfig1_2.11.94-0ubuntu1.1_amd64.deb ...
+Unpacking libfontconfig1:amd64 (2.11.94-0ubuntu1.1) ...
+Selecting previously unselected package libnspr4:amd64.
+Preparing to unpack .../libnspr4_2%3a4.13.1-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking libnspr4:amd64 (2:4.13.1-0ubuntu0.16.04.1) ...
+Selecting previously unselected package libnss3-nssdb.
+Preparing to unpack .../libnss3-nssdb_2%3a3.28.4-0ubuntu0.16.04.3_all.deb ...
+Unpacking libnss3-nssdb (2:3.28.4-0ubuntu0.16.04.3) ...
+Selecting previously unselected package libnss3:amd64.
+Preparing to unpack .../libnss3_2%3a3.28.4-0ubuntu0.16.04.3_amd64.deb ...
+Unpacking libnss3:amd64 (2:3.28.4-0ubuntu0.16.04.3) ...
+Selecting previously unselected package libpcsclite1:amd64.
+Preparing to unpack .../libpcsclite1_1.8.14-1ubuntu1.16.04.1_amd64.deb ...
+Unpacking libpcsclite1:amd64 (1.8.14-1ubuntu1.16.04.1) ...
+Selecting previously unselected package libxi6:amd64.
+Preparing to unpack .../libxi6_2%3a1.7.6-1_amd64.deb ...
+Unpacking libxi6:amd64 (2:1.7.6-1) ...
+Selecting previously unselected package libxrender1:amd64.
+Preparing to unpack .../libxrender1_1%3a0.9.9-0ubuntu1_amd64.deb ...
+Unpacking libxrender1:amd64 (1:0.9.9-0ubuntu1) ...
+Selecting previously unselected package openjdk-8-jre-headless:amd64.
+Preparing to unpack .../openjdk-8-jre-headless_8u181-b13-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking openjdk-8-jre-headless:amd64 (8u181-b13-0ubuntu0.16.04.1) ...
+Selecting previously unselected package ca-certificates-java.
+Preparing to unpack .../ca-certificates-java_20160321ubuntu1_all.deb ...
+Unpacking ca-certificates-java (20160321ubuntu1) ...
+Selecting previously unselected package puppet-agent.
+Preparing to unpack .../puppet-agent_1.10.14-1xenial_amd64.deb ...
+Unpacking puppet-agent (1.10.14-1xenial) ...
+Selecting previously unselected package puppetserver.
+Preparing to unpack .../puppetserver_2.8.1-1puppetlabs1_all.deb ...
+Unpacking puppetserver (2.8.1-1puppetlabs1) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Processing triggers for ca-certificates (20170717~16.04.1) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+Setting up libjpeg-turbo8:amd64 (1.4.2-0ubuntu3.1) ...
+Setting up liblcms2-2:amd64 (2.6-3ubuntu2) ...
+Setting up x11-common (1:7.7+13ubuntu3.1) ...
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+Setting up libxtst6:amd64 (2:1.2.2-1) ...
+Setting up java-common (0.56ubuntu2) ...
+Setting up libavahi-common-data:amd64 (0.6.32~rc+dfsg-1ubuntu2.2) ...
+Setting up libavahi-common3:amd64 (0.6.32~rc+dfsg-1ubuntu2.2) ...
+Setting up libavahi-client3:amd64 (0.6.32~rc+dfsg-1ubuntu2.2) ...
+Setting up libcups2:amd64 (2.1.3-4ubuntu0.5) ...
+Setting up libjpeg8:amd64 (8c-2ubuntu8) ...
+Setting up fonts-dejavu-core (2.35-1) ...
+Setting up fontconfig-config (2.11.94-0ubuntu1.1) ...
+Setting up libfontconfig1:amd64 (2.11.94-0ubuntu1.1) ...
+Setting up libnspr4:amd64 (2:4.13.1-0ubuntu0.16.04.1) ...
+Setting up libpcsclite1:amd64 (1.8.14-1ubuntu1.16.04.1) ...
+Setting up libxi6:amd64 (2:1.7.6-1) ...
+Setting up libxrender1:amd64 (1:0.9.9-0ubuntu1) ...
+Setting up puppet-agent (1.10.14-1xenial) ...
+Created symlink from /etc/systemd/system/multi-user.target.wants/puppet.service to /lib/systemd/system/puppet.service.
+Created symlink from /etc/systemd/system/multi-user.target.wants/mcollective.service to /lib/systemd/system/mcollective.
+service.
+Created symlink from /etc/systemd/system/multi-user.target.wants/pxp-agent.service to /lib/systemd/system/pxp-agent.serv
+ice.
+Removed symlink /etc/systemd/system/multi-user.target.wants/pxp-agent.service.
+Setting up libnss3-nssdb (2:3.28.4-0ubuntu0.16.04.3) ...
+Setting up libnss3:amd64 (2:3.28.4-0ubuntu0.16.04.3) ...
+Setting up openjdk-8-jre-headless:amd64 (8u181-b13-0ubuntu0.16.04.1) ...
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/rmid to provide /usr/bin/rmid (rmid) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java to provide /usr/bin/java (java) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/keytool to provide /usr/bin/keytool (keytool) in au
+to mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/jjs to provide /usr/bin/jjs (jjs) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/pack200 to provide /usr/bin/pack200 (pack200) in au
+to mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/rmiregistry to provide /usr/bin/rmiregistry (rmireg
+istry) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/unpack200 to provide /usr/bin/unpack200 (unpack200)
+ in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/orbd to provide /usr/bin/orbd (orbd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/servertool to provide /usr/bin/servertool (serverto
+ol) in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/tnameserv to provide /usr/bin/tnameserv (tnameserv)
+ in auto mode
+update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jexec to provide /usr/bin/jexec (jexec) in auto mod
+e
+Setting up ca-certificates-java (20160321ubuntu1) ...
+Adding debian:SecureSign_RootCA11.pem
+Adding debian:VeriSign_Class_3_Public_Primary_Certification_Authority_-_G5.pem
+Adding debian:Comodo_Secure_Services_root.pem
+Adding debian:TWCA_Global_Root_CA.pem
+Adding debian:GeoTrust_Universal_CA.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.pem
+Adding debian:IdenTrust_Public_Sector_Root_CA_1.pem
+Adding debian:thawte_Primary_Root_CA_-_G2.pem
+Adding debian:TÜRKTRUST_Elektronik_Sertifika_Hizmet_Saglayicisi_H5.pem
+Adding debian:GlobalSign_Root_CA.pem
+Adding debian:Certum_Trusted_Network_CA.pem
+Adding debian:Atos_TrustedRoot_2011.pem
+Adding debian:Buypass_Class_3_Root_CA.pem
+Adding debian:TWCA_Root_Certification_Authority.pem
+Adding debian:VeriSign_Universal_Root_Certification_Authority.pem
+Adding debian:thawte_Primary_Root_CA_-_G3.pem
+Adding debian:Visa_eCommerce_Root.pem
+Adding debian:SZAFIR_ROOT_CA2.pem
+Adding debian:DST_Root_CA_X3.pem
+Adding debian:AddTrust_Low-Value_Services_Root.pem
+Adding debian:AffirmTrust_Networking.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R5.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2015.pem
+Adding debian:NetLock_Arany_=Class_Gold=_Fotanúsítvány.pem
+Adding debian:OpenTrust_Root_CA_G3.pem
+Adding debian:Entrust_Root_Certification_Authority_-_EC1.pem
+Adding debian:Swisscom_Root_EV_CA_2.pem
+Adding debian:QuoVadis_Root_CA_2.pem
+Adding debian:IdenTrust_Commercial_Root_CA_1.pem
+Adding debian:CNNIC_ROOT.pem
+Adding debian:QuoVadis_Root_CA_3.pem
+Adding debian:Certigna.pem
+Adding debian:DigiCert_Assured_ID_Root_CA.pem
+Adding debian:GeoTrust_Global_CA_2.pem
+Adding debian:GeoTrust_Universal_CA_2.pem
+Adding debian:Entrust_Root_Certification_Authority_-_G2.pem
+Adding debian:Certplus_Root_CA_G2.pem
+Adding debian:Staat_der_Nederlanden_Root_CA_-_G2.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_2009.pem
+Adding debian:GlobalSign_Root_CA_-_R2.pem
+Adding debian:Sonera_Class_2_Root_CA.pem
+Adding debian:ePKI_Root_Certification_Authority.pem
+Adding debian:Certplus_Root_CA_G1.pem
+Adding debian:Microsec_e-Szigno_Root_CA_2009.pem
+Adding debian:CFCA_EV_ROOT.pem
+Adding debian:DST_ACES_CA_X6.pem
+Adding debian:USERTrust_ECC_Certification_Authority.pem
+Adding debian:AddTrust_Qualified_Certificates_Root.pem
+Adding debian:XRamp_Global_CA_Root.pem
+Adding debian:Camerfirma_Global_Chambersign_Root.pem
+Adding debian:QuoVadis_Root_CA_1_G3.pem
+Adding debian:OpenTrust_Root_CA_G2.pem
+Adding debian:DigiCert_Global_Root_G2.pem
+Adding debian:TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem
+Adding debian:QuoVadis_Root_CA.pem
+Adding debian:Actalis_Authentication_Root_CA.pem
+Adding debian:Trustis_FPS_Root_CA.pem
+Adding debian:Swisscom_Root_CA_1.pem
+Adding debian:Amazon_Root_CA_1.pem
+Adding debian:Network_Solutions_Certificate_Authority.pem
+Adding debian:GeoTrust_Global_CA.pem
+Adding debian:AddTrust_Public_Services_Root.pem
+Adding debian:USERTrust_RSA_Certification_Authority.pem
+Adding debian:Comodo_Trusted_Services_root.pem
+Adding debian:Swisscom_Root_CA_2.pem
+Adding debian:Security_Communication_EV_RootCA1.pem
+Adding debian:TÜBITAK_UEKAE_Kök_Sertifika_Hizmet_Saglayicisi_-_Sürüm_3.pem
+Adding debian:E-Tugra_Certification_Authority.pem
+Adding debian:China_Internet_Network_Information_Center_EV_Certificates_Root.pem
+Adding debian:Amazon_Root_CA_3.pem
+Adding debian:Hongkong_Post_Root_CA_1.pem
+Adding debian:AffirmTrust_Premium_ECC.pem
+Adding debian:ACEDICOM_Root.pem
+Adding debian:Entrust.net_Premium_2048_Secure_Server_CA.pem
+Adding debian:Comodo_AAA_Services_root.pem
+Adding debian:CA_Disig_Root_R1.pem
+Adding debian:Certum_Trusted_Network_CA_2.pem
+Adding debian:UTN_USERFirst_Hardware_Root_CA.pem
+Adding debian:Cybertrust_Global_Root.pem
+Adding debian:DigiCert_Global_Root_G3.pem
+Adding debian:Go_Daddy_Class_2_CA.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R4.pem
+Adding debian:GlobalSign_Root_CA_-_R3.pem
+Adding debian:Camerfirma_Chambers_of_Commerce_Root.pem
+Adding debian:Staat_der_Nederlanden_Root_CA_-_G3.pem
+Adding debian:QuoVadis_Root_CA_2_G3.pem
+Adding debian:Chambers_of_Commerce_Root_-_2008.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_2.pem
+Adding debian:AddTrust_External_Root.pem
+Adding debian:Certinomis_-_Autorité_Racine.pem
+Adding debian:Amazon_Root_CA_2.pem
+Adding debian:COMODO_ECC_Certification_Authority.pem
+Adding debian:certSIGN_ROOT_CA.pem
+Adding debian:ACCVRAIZ1.pem
+Adding debian:ISRG_Root_X1.pem
+Adding debian:VeriSign_Class_3_Public_Primary_Certification_Authority_-_G4.pem
+Adding debian:PSCProcert.pem
+Adding debian:DigiCert_Assured_ID_Root_G3.pem
+Adding debian:SecureTrust_CA.pem
+Adding debian:GeoTrust_Primary_Certification_Authority_-_G3.pem
+Adding debian:DigiCert_High_Assurance_EV_Root_CA.pem
+Adding debian:thawte_Primary_Root_CA.pem
+Adding debian:COMODO_RSA_Certification_Authority.pem
+Adding debian:GeoTrust_Primary_Certification_Authority.pem
+Adding debian:TURKTRUST_Certificate_Services_Provider_Root_2007.pem
+Adding debian:OpenTrust_Root_CA_G1.pem
+Adding debian:AffirmTrust_Premium.pem
+Adding debian:Go_Daddy_Root_Certificate_Authority_-_G2.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_3.pem
+Adding debian:Izenpe.com.pem
+Adding debian:EC-ACC.pem
+Adding debian:SwissSign_Gold_CA_-_G2.pem
+Adding debian:Verisign_Class_3_Public_Primary_Certification_Authority_-_G3.pem
+Adding debian:Starfield_Root_Certificate_Authority_-_G2.pem
+Adding debian:Deutsche_Telekom_Root_CA_2.pem
+Adding debian:OISTE_WISeKey_Global_Root_GB_CA.pem
+Adding debian:AC_RAIZ_FNMT-RCM.pem
+Adding debian:AffirmTrust_Commercial.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_EV_2009.pem
+Adding debian:COMODO_Certification_Authority.pem
+Adding debian:Taiwan_GRCA.pem
+Adding debian:Security_Communication_RootCA2.pem
+Adding debian:EE_Certification_Centre_Root_CA.pem
+Adding debian:Baltimore_CyberTrust_Root.pem
+Adding debian:DigiCert_Trusted_Root_G4.pem
+Adding debian:DigiCert_Assured_ID_Root_G2.pem
+Adding debian:CA_Disig_Root_R2.pem
+Adding debian:DigiCert_Global_Root_CA.pem
+Adding debian:Entrust_Root_Certification_Authority.pem
+Adding debian:Starfield_Services_Root_Certificate_Authority_-_G2.pem
+Adding debian:Certum_Root_CA.pem
+Adding debian:Staat_der_Nederlanden_EV_Root_CA.pem
+Adding debian:Security_Communication_Root_CA.pem
+Adding debian:Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem
+Adding debian:Certinomis_-_Root_CA.pem
+Adding debian:Buypass_Class_2_Root_CA.pem
+Adding debian:GeoTrust_Primary_Certification_Authority_-_G2.pem
+Adding debian:Amazon_Root_CA_4.pem
+Adding debian:Secure_Global_CA.pem
+Adding debian:LuxTrust_Global_Root_2.pem
+Adding debian:Starfield_Class_2_CA.pem
+Adding debian:QuoVadis_Root_CA_3_G3.pem
+Adding debian:Certplus_Class_2_Primary_CA.pem
+Adding debian:SwissSign_Silver_CA_-_G2.pem
+Adding debian:TeliaSonera_Root_CA_v1.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2011.pem
+Adding debian:OISTE_WISeKey_Global_Root_GA_CA.pem
+Adding debian:Global_Chambersign_Root_-_2008.pem
+done.
+Setting up puppetserver (2.8.1-1puppetlabs1) ...
+usermod: no changes
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Processing triggers for ca-certificates (20170717~16.04.1) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+
+done.
+done.
+vagrant@puppet:~$ sudo ufw allow 8140
+Rules updated
+Rules updated (v6)
+vagrant@puppet:~$ sudo vi /etc/default/puppetserver
+vagrant@puppet:~$ sudo systemctl start puppetserver
+vagrant@puppet:~$ sudo systemctl status puppetserver
+? puppetserver.service - puppetserver Service
+   Loaded: loaded (/lib/systemd/system/puppetserver.service; disabled; vendor preset: enabled)
+   Active: active (running) since Fri 2018-08-10 03:16:16 UTC; 10s ago
+  Process: 14970 ExecStart=/opt/puppetlabs/server/apps/puppetserver/bin/puppetserver start (code=exited, status=0/SUCCES
+ Main PID: 14980 (java)
+    Tasks: 28
+   Memory: 1.2G
+      CPU: 1min 41.007s
+   CGroup: /system.slice/puppetserver.service
+           +-14980 /usr/bin/java -Xms3g -Xmx3g -XX:MaxPermSize=256m -Djava.security.egd=/dev/urandom -XX:OnOutOfMemoryEr
+
+Aug 10 03:15:18 puppet systemd[1]: Starting puppetserver Service...
+Aug 10 03:15:18 puppet puppetserver[14970]: OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support
+Aug 10 03:16:16 puppet systemd[1]: Started puppetserver Service.
+...skipping...
+? puppetserver.service - puppetserver Service
+   Loaded: loaded (/lib/systemd/system/puppetserver.service; disabled; vendor preset: enabled)
+   Active: active (running) since Fri 2018-08-10 03:16:16 UTC; 10s ago
+  Process: 14970 ExecStart=/opt/puppetlabs/server/apps/puppetserver/bin/puppetserver start (code=exited, status=0/SUCCES
+ Main PID: 14980 (java)
+    Tasks: 28
+   Memory: 1.2G
+      CPU: 1min 41.007s
+   CGroup: /system.slice/puppetserver.service
+           +-14980 /usr/bin/java -Xms3g -Xmx3g -XX:MaxPermSize=256m -Djava.security.egd=/dev/urandom -XX:OnOutOfMemoryEr
+
+Aug 10 03:15:18 puppet systemd[1]: Starting puppetserver Service...
+Aug 10 03:15:18 puppet puppetserver[14970]: OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support
+Aug 10 03:16:16 puppet systemd[1]: Started puppetserver Service.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+vagrant@puppet:~$ sudo systemctl enable puppetserver
+Synchronizing state of puppetserver.service with SysV init with /lib/systemd/systemd-sysv-install...
+Executing /lib/systemd/systemd-sysv-install enable puppetserver
+vagrant@puppet:~$ sudo /opt/puppetlabs/bin/puppet cert list
+  "node1" (SHA256) 80:49:FF:74:6E:4F:C0:4E:A6:7B:40:1A:D9:CD:82:AC:27:BA:7F:7C:5C:5D:B5:7D:A2:08:90:03:64:6A:6C:98
+vagrant@puppet:~$ sudo /opt/puppetlabs/bin/puppet cert list -all
+  "node1"  (SHA256) 80:49:FF:74:6E:4F:C0:4E:A6:7B:40:1A:D9:CD:82:AC:27:BA:7F:7C:5C:5D:B5:7D:A2:08:90:03:64:6A:6C:98
++ "puppet" (SHA256) 45:71:89:D2:3E:AD:73:63:13:18:8E:52:4D:5A:A5:8C:F6:DB:ED:D4:AC:DD:F3:92:E1:4F:BF:14:C5:DA:F8:AF (alt
+ names: "DNS:puppet", "DNS:puppet")
+vagrant@puppet:~$ sudo /opt/puppetlabs/bin/puppet cert sign node1
+Signing Certificate Request for:
+  "node1" (SHA256) 80:49:FF:74:6E:4F:C0:4E:A6:7B:40:1A:D9:CD:82:AC:27:BA:7F:7C:5C:5D:B5:7D:A2:08:90:03:64:6A:6C:98
+Notice: Signed certificate request for node1
+Notice: Removing file Puppet::SSL::CertificateRequest node1 at '/etc/puppetlabs/puppet/ssl/ca/requests/node1.pem'
+vagrant@puppet:~$ sudo /opt/puppetlabs/bin/puppet cert list -all
++ "node1"  (SHA256) 58:07:20:D2:DD:03:CA:44:0C:30:E8:98:E2:EE:1A:54:89:99:91:73:F7:8A:C3:57:88:0C:B7:04:E2:44:54:7E
++ "puppet" (SHA256) 45:71:89:D2:3E:AD:73:63:13:18:8E:52:4D:5A:A5:8C:F6:DB:ED:D4:AC:DD:F3:92:E1:4F:BF:14:C5:DA:F8:AF (alt
+ names: "DNS:puppet", "DNS:puppet")
+vagrant@puppet:~$ sudo vi /etc/puppetlabs/code/environments/production/manifests/site.pp
+vagrant@puppet:~$
